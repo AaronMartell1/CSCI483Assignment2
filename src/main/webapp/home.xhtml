@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/_template.xhtml">
+    <ui:define name="metaInfo">
+
+    </ui:define>
+    <ui:define name="tracker"/>
+    <ui:define name="centerpane"> 
+        <div style="height: 1320px; width: 100%">
+                
+            <!-- Home login page -->
+            <h:form>
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Username: "/>
+                    <p:inputText id="username" value="#{sessionBean1.currentUser.uName}"/>
+                    <p:message id="unameMsg" for="username"/>
+                    
+                    <p:outputLabel value="Password: "/>
+                    <p:inputText id="password" value="#{sessionBean1.currentUser.pWord}"/>
+                    <p:message id="pwordMsg" for="password"/>
+                    
+                    <p:commandButton value="Login" action="Reviews.xhtml?faces-redirect=true">
+                        <f:actionListener/>
+                    </p:commandButton>
+                </h:panelGrid>
+                               
+            </h:form>
+
+            <h:panelGrid style="padding:10px; line-height: 24px; position:absolute; top:560px; text-align: center; left:50%; margin-left:-600px; width: 1200px; height:160px; ">
+
+            </h:panelGrid>
+
+            
+        </div>
+
+    </ui:define>
+</ui:composition>

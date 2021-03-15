@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/_template.xhtml">
+    <ui:define name="metaInfo">
+
+    </ui:define>
+    <ui:define name="tracker"/>
+    <ui:define name="centerpane"> 
+        <div style="height: 1320px; width: 100%">
+                
+            <!-- Form reviewform holds all the input text for creating a review, stores written values under currentReview temporarily -->
+            <h:form id="reviewform">                
+                <h:panelGrid>
+                    
+                    <p:outputLabel value="Publication Title" />
+                    <p:inputTextarea rows="2" cols="30"  counter="pubtitle" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.pubTitle}"/>
+                    <h:outputText id="pubtitle" class="p-d-block" />
+                    
+                    <p:outputLabel value="Publication URL"/>
+                    <p:inputTextarea rows="2" cols="30"  counter="pubURL" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.pubURL}"/>
+                    <h:outputText id="pubURL" class="p-d-block" />
+                    
+                    <p:outputLabel value="Summary"/>
+                    <p:inputTextarea rows="5" cols="30"  counter="summary" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.summary}"/>
+                    <h:outputText id="summary" class="p-d-block" />
+                    
+                    <p:outputLabel value="Positives"/>
+                    <p:inputTextarea rows="5" cols="30"  counter="positives" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.postives}"/>
+                    <h:outputText id="positives" class="p-d-block" />
+                    
+                    <p:outputLabel value="Negatives"/>
+                    <p:inputTextarea rows="5" cols="30"  counter="negatives" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.negatives}"/>
+                    <h:outputText id="negatives" class="p-d-block" />
+                    
+                    <p:outputLabel value="Major Points"/>
+                    <p:inputTextarea rows="5" cols="30"  counter="majPts" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.majPoints}"/>
+                    <h:outputText id="majPts" class="p-d-block" />
+                    
+                    <p:outputLabel value="Minor Points"/>
+                    <p:inputTextarea rows="5" cols="30"  counter="minPts" maxlength="5000"
+                                     counterTemplate="{0} characters remaining." autoResize="false" value="#{sessionBean1.currentReview.minPoints}"/>
+                    <h:outputText id="minPts" class="p-d-block" />
+                    
+                    <p:commandButton value="Post" action="Reviews.xhtml?faces-redirect=true">
+                        <f:actionListener/>
+                    </p:commandButton>
+                </h:panelGrid>
+                               
+            </h:form>
+
+            <h:panelGrid style="padding:10px; line-height: 24px; position:absolute; top:560px; text-align: center; left:50%; margin-left:-600px; width: 1200px; height:160px; ">
+
+            </h:panelGrid>
+
+            
+        </div>
+
+    </ui:define>
+</ui:composition>

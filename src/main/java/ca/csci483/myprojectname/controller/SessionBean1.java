@@ -5,41 +5,44 @@
 package ca.csci483.myprojectname.controller;
 
 import ca.csci483.myprojectname.utils.DataUtils;
-import ca.csci483.myprojectname.model.User;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
 
+
 /**
  *
- * @author osoufan
+ * @author Aaron Martell
  */
+
 @SessionScoped
 @Named("sessionBean1")
 public class SessionBean1 implements Serializable {
 
     private final ApplicationBean1 ab = (ApplicationBean1) DataUtils.findBean("applicationBean1");
-    private User currentUser = null;
     
-    private String myName = "Othman";
-
-    public User getCurrentUser() {
-        return currentUser;
+    
+    private StudentList stuList;
+    private ReviewList revList;
+    private Student currentUser;
+    private Review currentReview;
+    
+    @PostConstruct
+    public void init(){
+        this.currentUser = new Student();
+        this.currentReview = new Review();
+        initLists();
     }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
+    
+    //Method to initilize the StudentList and ReviewList with the relevent data stored in their respective .txt files
+    public void initLists(){
+        
+        
     }
-
-    public String getMyName() {
-        return myName;
-    }
-
-    public void setMyName(String myName) {
-        this.myName = myName;
-    }
-
+    
+    
     /**
      * <p>
      * Construct a new session data bean instance.</p>
@@ -56,6 +59,63 @@ public class SessionBean1 implements Serializable {
 
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+    
+    /**
+     * @return the stuList
+     */
+    public StudentList getStuList() {
+        return stuList;
+    }
+
+    /**
+     * @param stuList the stuList to set
+     */
+    public void setStuList(StudentList stuList) {
+        this.stuList = stuList;
+    }
+
+    /**
+     * @return the currentUser
+     */
+    public Student getCurrentUser() {
+        return currentUser;
+    }
+
+    /**
+     * @param currentUser the currentUser to set
+     */
+    public void setCurrentUser(Student currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    /**
+     * @return the currentReview
+     */
+    public Review getCurrentReview() {
+        return currentReview;
+    }
+
+    /**
+     * @param currentReview the currentReview to set
+     */
+    public void setCurrentReview(Review currentReview) {
+        this.currentReview = currentReview;
+    }
+
+    /**
+     * @return the revList
+     */
+    public ReviewList getRevList() {
+        return revList;
+    }
+
+    /**
+     * @param revList the revList to set
+     */
+    public void setRevList(ReviewList revList) {
+        this.revList = revList;
     }
     
 }

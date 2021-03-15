@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/_template.xhtml">
+    <ui:define name="metaInfo">
+
+    </ui:define>
+    <ui:define name="tracker"/>
+    <ui:define name="centerpane"> 
+        <div style="height: 1320px; width: 100%">
+                
+            <!--Displays the reviews as a scrollable list --> 
+            <h:form>
+                <p:dataScroller value="#{sessionBean1.revList}" var="review" chunkSize="10">
+                    <f:facet name="header">
+                        Reviews
+                    </f:facet>
+
+                    <div class="product">
+                        <div class="product-list-item p-p-5">
+                            <p:graphicImage name="demo/images/product/#{product.image}"/>
+                            <div class="product-list-detail">
+                                <div class="product-name">#{product.name}</div>
+                                <div class="product-description">#{product.description}</div>
+                                <p:rating readonly="true" value="#{product.rating}"/>
+                                <i class="pi pi-tag product-category-icon"/><span
+                                    class="product-category">#{product.category}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <h:outputText value="#{product.price}" styleClass="product-price">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                                <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                                 disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
+                                </p:commandButton>
+                                <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                            </div>
+                        </div>
+                    </div>
+                </p:dataScroller>
+            </h:form>
+
+            <h:panelGrid style="padding:10px; line-height: 24px; position:absolute; top:560px; text-align: center; left:50%; margin-left:-600px; width: 1200px; height:160px; ">
+
+            </h:panelGrid>
+
+            
+        </div>
+
+    </ui:define>
+</ui:composition>
